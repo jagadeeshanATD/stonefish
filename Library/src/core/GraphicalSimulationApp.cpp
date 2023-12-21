@@ -340,8 +340,12 @@ void GraphicalSimulationApp::WindowEvent(SDL_Event* event)
 void GraphicalSimulationApp::KeyDown(SDL_Event *event)
 {
     GLfloat moveStep = 0.1f;
+    GLfloat rotateStep = 4.f;
     if(event->key.keysym.mod & KMOD_SHIFT)
+    { 
         moveStep = 1.f;
+        rotateStep= 15.f;
+    }
 
     switch (event->key.keysym.sym)
     {
@@ -435,7 +439,7 @@ void GraphicalSimulationApp::KeyDown(SDL_Event *event)
             OpenGLTrackball* trackball = getSimulationManager()->getTrackball();
             if(trackball->isEnabled())
             {
-                glm::quat rotation = glm::angleAxis(glm::radians(-rotateAngle), glm::vec3(0.0f, 0.0f, 1.0f));
+                glm::quat rotation = glm::angleAxis(glm::radians(-rotateStep), glm::vec3(0.0f, 0.0f, 1.0f));
                 trackball->Rotate(rotation);
             }
         }
@@ -447,7 +451,7 @@ void GraphicalSimulationApp::KeyDown(SDL_Event *event)
 
             if(trackball->isEnabled())
             {
-                glm::quat rotation = glm::angleAxis(glm::radians(rotateAngle),glm::vec3(0.0f, 0.0f, 1.0f));
+                glm::quat rotation = glm::angleAxis(glm::radians(rotateStep),glm::vec3(0.0f, 0.0f, 1.0f));
                 trackball->Rotate(rotation);
             }
         }
