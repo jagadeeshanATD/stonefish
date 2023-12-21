@@ -160,6 +160,9 @@ namespace sf
         
         //! A method returning the type of the vision sensor.
         VisionSensorType getVisionSensorType();
+
+        //! A method returning the vertical field of view of the MSIS [deg].
+        Scalar getVerticalFOV();
         
     private:
         void InitGraphics();
